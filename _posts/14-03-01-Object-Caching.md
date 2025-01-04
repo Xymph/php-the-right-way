@@ -22,9 +22,9 @@ hyper-fast data store in a central location and many different systems can pull 
 
 Note that whether the cache is shared across PHP processes depends on how PHP is used. When running PHP via PHP-FPM,
 the cache is shared across all processes of all pools. When running PHP as a (Fast-)CGI application inside your
-webserver, the cache is not shared, i.e every PHP process will have its own APCu data. When running PHP as a command
-line, the cache is not shared and will only exist for the duration of the command. So you have to be mindful of your
-situation and goals. And you might want to consider using memcached instead, as it's not tied to the PHP processes.
+webserver, the cache is not shared, i.e every PHP process will have its own APCu data. When running PHP on the command
+line, the cache is not shared and will only exist for the duration of the command, so you have to be mindful of your
+situation and goals. You might want to consider using memcached instead, as it's not tied to the PHP processes.
 
 In a networked configuration APCu will usually outperform memcached in terms of access speed, but memcached will be
 able to scale up faster and further. If you do not expect to have multiple servers running your application, or do not
@@ -43,9 +43,6 @@ if ($data === false) {
 
 print_r($data);
 {% endhighlight %}
-
-Note that prior to PHP 5.5, there was the APC extension which provided both an object cache and a bytecode cache. The new APCu is a project to bring APC's
-object cache to PHP 5.5+, since PHP now has a built-in bytecode cache (OPcache).
 
 ### Learn more about popular object caching systems:
 
